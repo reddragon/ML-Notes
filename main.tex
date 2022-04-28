@@ -1,0 +1,123 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{graphbox}
+\usepackage{subfig}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{pgfplots}
+\usepackage{dsfont}
+\newcommand{\somecomment}[1]{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\captionsetup[table]{skip=10pt}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand\mbf{\mathbf}
+
+\title{Machine Learning Notes}
+\author{Gaurav Menghani}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+These are mostly notes for concepts that I keep forgetting about. So keeping a doc of running notes to ensure I remember them.
+
+\section{Empirical Risk Minimization}
+Assuming there is a hypothesis $h \in H$, s.t. $h: X \to Y$. There is also a risk function $R(h) = \mathbb{E} [L(h(x), y)]$. We want to choose $h^*$ such that it minimizes $R(h)$ for all possible $h \in H$, i.e.:
+
+\begin{equation}
+\begin{split}
+    h^*& = \argmin_{h \in H} R(h)\\
+    & = \argmin_{h \in H} \mathbb{E} [L(h(x), y)]\\
+    & = \int_{x, y} L(h(x), y) dP(x, y)
+\end{split}
+\end{equation}
+
+Since we do not know the true joint distribution $P(x, y)$, we must empirically estimate it using the training dataset of size $n$ examples.
+
+In this case we can construct an \textit{empirical} risk $R_{\rm emp}(h)$, s.t.
+
+\begin{equation}
+    R_{\rm emp} = \ddfrac{1}{n} \sum_{i=1}^{n} L(h(x_i), y_i)
+\end{equation}
+
+The hypothesis $\hat{h}$ which mininimizes this empirical risk, is what we are looking for in ERM (TODO: Cite Vapnik1991).
+
+\begin{equation}
+    \hat{h} = \argmin_{h \in H} R_{\rm emp}
+\end{equation}
+
+\section{Maximum Likelihood Estimation (MLE)}
+
+\section{Maximum A Posteriori (MAP) Estimate}
+
+\section{Prediction v/s Inference}
+For the prediction task we are trying to estimate $P(y | x)$. This is useful in settings like classification.
+
+For the inference task we are trying to estimate $P (x | y)$.
+
+\section{Bias Variance Tradeoff}
+\begin{equation}
+\begin{split}
+    \mathbb{E}[f(x, y) - \hat{f}(x, y)]^2 &= \rm{Variance\ Terms} + \rm{Bias\ Terms} + \rm{Irreducible\ Error}.
+\end{split}
+\end{equation}
+
+Variance terms are more if the function $f$ is flexible, i.e., changing the $n$ datapoints used for training will lead to a very different $f$. This happens when there is overfitting.
+
+Bias terms are dominant when the function $f$ is inflexible, i.e., $\mathbb{E}[f(x, y) - \hat{f}(x, y)]$ is large. This happens when there is underfitting.
+
+\section{Summation Bounds}
+Bernstein Bounds, Jensen Inequality, Chernoff Bounds, Hoeffdling's Inequality.
+
+\section{Bayes Classifier and Naive Bayes Classifier}
+
+\section{Parameteric v/s Non-Parametric Models}
+Parametric models need a lot of parameters, where as non-parameteric models need a lot of data points. A neural network is a parametric model, and a k-Nearest Neighbor model is a non-parametric model.
+
+\section{k-Nearest Neighbors (kNN)}
+This is a non-parametric model where we can infer the label $y$ of a given $x$ based on the neighbors of $x$.
+
+\section{k-Means Clustering}
+
+\section{Irreducible Error}
+For many problems, the response $\mbf y$ can be represented in terms of the predictors $\mbf x$ as follows:
+
+\begin{equation}
+\mbf{y} = f(\mbf{x}) + \epsilon
+\end{equation}
+
+Where $\epsilon$ is the irreducible error, and $f$ is the function that we learnt. The reason $\epsilon$ could be > 0 because of noise, missing predictors, etc.
+
+\section{Flexible and Inflexible Functions}
+Consider a function $f$.
+
+\section{AUC}
+
+\section{Online Learning}
+
+\section{Stochastic Gradient Descent}
+
+\section{Minibatches}
+
+\section{Active Learning}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bib}
+\end{document}
