@@ -1,0 +1,56 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+\usepackage{lipsum}
+\usepackage{graphicx}
+\usepackage{graphbox}
+\usepackage{subfig}
+\usepackage[ruled,vlined,linesnumbered]{algorithm2e}
+\usepackage{algorithmic}
+\usepackage{multirow}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{pgfplots}
+\usepackage{dsfont}
+\newcommand{\somecomment}[1]{}
+\newcommand\ddfrac[2]{\frac{\displaystyle #1}{\displaystyle #2}}
+\captionsetup[table]{skip=10pt}
+\newcolumntype{L}{>{\centering\arraybackslash}m{3cm}}
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
+\newcommand\mbf{\mathbf}
+
+\title{Deep Learning Notes}
+\author{Gaurav Menghani}
+\date{April 2022}
+
+\begin{document}
+
+\maketitle
+
+Deep Learning specific notes.
+
+\section{Layer Norm v/s Batch Norm}
+Assuming a tensor of dimensions \texttt{[N, H, W, C]}, BN normalizes over the first three dimensions. So note that it depends on the batch size. Whereas LN normalizes over the last three dimensions. We do compute $\gamma$ and $\beta$ for both, it is just which axes they are computed over.
+
+\section{Receptive field of a ConvNet}
+
+\section{Attention}
+
+\section{Quantization}
+
+\section{Cross Entropy, KL Divergence, and others}
+
+\section{Why do ConvNets work better than Dense FC layers on image problems?}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{bib}
+\end{document}
